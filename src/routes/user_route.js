@@ -1,23 +1,20 @@
 const express = require('express')
 const auth = require("../middleware/auth")
 const router = new express.Router()
-const {createUser,Login,updateUser,deleteUser,getUser} = require("../controller/userController")
-const url = "/api"
+const {createUser,Login,deleteUser,getUser,createHospital,getHospital} = require("../controller/userController")
+
 
 //login
 router.post('/api/login',Login) 
-
-//create user by admin
 router.post('/api/user',createUser)
-
-//update user by admin
-router.patch('/api/user/update/:id',auth,updateUser)
+router.post('/api/hospital',createHospital)
 
 //delete user by admin
-router.delete('/api/user/delete/:id',auth,deleteUser)
+// router.g('/api/user/',auth,deleteUser)
 
 //view profile by user
-router.get('/api/user/get',auth,getUser)
+router.get('/api/user',auth,getUser)
+router.get('/api/hospital',auth,getHospital)
 
 
 module.exports = router;

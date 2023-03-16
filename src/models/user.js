@@ -49,11 +49,6 @@ const userSchema = new mongoose.Schema({
         enum:gender,
         required: true,
     },
-    role: {
-        type: String,
-        enum:roles,
-        required: true,
-    },
     token: {
         type: String,
     }
@@ -69,7 +64,7 @@ userSchema.pre("save", async function (next) {
 })
 userSchema.methods.generateAuthToken = async function () {
     const user = this
-    const token = jwt.sign({ _id: user._id.toString() }, "jidjfidjidijij")
+    const token = jwt.sign({ _id: user._id.toString() }, "secrent_key_1234")
 
     user.token = token 
     await user.save()
@@ -80,6 +75,5 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password);
 }
 
-const User = new mongoose.model('user', userSchema)
-
-module.exports = User
+// const User = new mongoose.model('user', userSchema)
+module.exports = mongoose.models.User || mongoose.model('user', userSchema)
