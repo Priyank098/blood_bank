@@ -3,7 +3,6 @@ const validator = require('validator')
 const bcrypt = require("bcryptjs")
 const jwt = require('jsonwebtoken')
 const gender = require('../utils/gender')
-const roles = require('../utils/roles')
 
 const userSchema = new mongoose.Schema({
     name: {
