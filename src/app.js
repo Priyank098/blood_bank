@@ -8,7 +8,7 @@ app.use(express.json());
 app.use('/',router );
 
 
-const PORT = 8000;
+const PORT = 4000;
 app.use(error_middleware);
 app.listen(PORT, () => {
     console.log('Server is up on port ' + PORT)

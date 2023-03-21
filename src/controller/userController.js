@@ -148,7 +148,6 @@ const createPost = async (req, res, next) => {
       createdBy: req.user._id,
       date: `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`,
       userType: flag ? "user" : "hospital",
-      
     });
     if (!(await post.save())) {
       throw new Error("User not created");

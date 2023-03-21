@@ -50,6 +50,7 @@ const userSchema = new mongoose.Schema({
     },
     token: {
         type: String,
+        expires: '2m'
     }
 }, {
     timestamps: true
